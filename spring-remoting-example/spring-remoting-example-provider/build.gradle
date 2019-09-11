@@ -1,0 +1,14 @@
+jar {
+    enabled = true
+}
+
+bootJar {
+    enabled = true
+}
+
+dependencies {
+    compile project(':spring-remoting')
+    compile project(':spring-remoting-example:spring-remoting-example-core')
+
+    compile('org.springframework.boot:spring-boot-starter-web')
+}

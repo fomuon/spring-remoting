@@ -17,6 +17,13 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * {@code RemotingService} annotation 을 추가한 객체를 Component 로 등록하고,
+ * 원격 호출 될 수 있도록 {@code HttpInvokerServiceExporter} 를 생성한다.
+ *
+ * @author yongkyu.lee
+ * @since 0.1.0
+ */
 public class HttpInvokerRemotingServiceConfigurer implements BeanFactoryPostProcessor {
 
 	@Override

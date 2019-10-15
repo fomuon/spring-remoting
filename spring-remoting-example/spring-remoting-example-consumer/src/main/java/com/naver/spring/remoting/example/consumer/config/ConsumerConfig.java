@@ -1,28 +1,23 @@
 package com.naver.spring.remoting.example.consumer.config;
 
-import com.naver.spring.remoting.example.core.shoping.OrderGoodsService;
-import com.naver.spring.remoting.httpinvoker.HttpInvokerConfiguration;
-import com.naver.spring.remoting.httpinvoker.HttpInvokerConfigurer;
+import com.naver.spring.remoting.httpinvoker.HttpInvokerScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.remoting.httpinvoker.HttpComponentsHttpInvokerRequestExecutor;
+import org.springframework.remoting.httpinvoker.HttpInvokerRequestExecutor;
 
 @Configuration
-public class ConsumerConfig extends HttpInvokerConfigurer {
-	private HttpComponentsHttpInvokerRequestExecutor requestExecutor;
+@HttpInvokerScan(baseUrl = "http://localhost:8081/",
+		basePackages = "com.naver.spring.remoting.example.core",
+		httpInvokerRequestExecutorRef = "httpInvokerRequestExecutor")
+public class ConsumerConfig {
 
-	public ConsumerConfig() {
-		requestExecutor = new HttpComponentsHttpInvokerRequestExecutor();
-	}
+	@Bean
+	public HttpInvokerRequestExecutor httpInvokerRequestExecutor() {
+		HttpComponentsHttpInvokerRequestExecutor requestExecutor = new HttpComponentsHttpInvokerRequestExecutor();
+		requestExecutor.setConnectTimeout(20950);
 
-	@Override
-	public void configureHttpInvoker(HttpInvokerConfiguration httpInvokerConfiguration) {
+		return requestExecutor;
 
-		httpInvokerConfiguration.addHttpInvokerConfiguration("http://localhost:8081/",
-				requestExecutor,
-				"com.naver.spring.remoting.example.core.booking");
-
-		httpInvokerConfiguration.addHttpInvokerConfiguration("http://localhost:8081/",
-				requestExecutor,
-				OrderGoodsService.class);
 	}
 }

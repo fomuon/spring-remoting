@@ -1,12 +1,12 @@
-package com.naver.spring.remoting.example.provider;
+package com.naver.spring.remoting.example.consumer;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringRemotingExampleProviderApplication {
+public class SpringRemotingExampleConsumerApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(SpringRemotingExampleProviderApplication.class, args);
+		SpringApplication.run(SpringRemotingExampleConsumerApplication.class, args);
 	}
 }
